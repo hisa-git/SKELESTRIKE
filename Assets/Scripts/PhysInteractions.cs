@@ -49,3 +49,4 @@ public class PhysInteractions : MonoBehaviour
         Damage(Math.Min(dmg, minDmg));
     }
 }
+

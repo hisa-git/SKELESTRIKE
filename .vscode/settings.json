@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "UnivProj.slnx"
+    "dotnet.defaultSolution": "Skelestrike.slnx"
 }
