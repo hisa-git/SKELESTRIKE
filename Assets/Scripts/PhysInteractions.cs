@@ -38,7 +38,7 @@ public class PhysInteractions : MonoBehaviour
 
         Vector3 otherVel = new Vector3();
         float otherMass = 1f;
-        if (collision.gameObject.GetComponent<Rigidbody>() != null)
+        if (collision.gameObject.GetComponent<Rigidbody>() != null && collision.gameObject.GetComponent<PlayerMovement>() == null)
         {
             otherVel = collision.gameObject.GetComponent<Rigidbody>().linearVelocity;
             otherMass = collision.gameObject.GetComponent<Rigidbody>().mass;
