@@ -76,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 jumpForce = new Vector3(0, jumpStrenght, 0);
             rb.AddForce(jumpForce, ForceMode.Impulse);
+            CoolnessManager.Add(5);
         }
     }
 
