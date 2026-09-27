@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PhysInteractions : MonoBehaviour
+public class Destructable : MonoBehaviour
 {
     [SerializeField]
     private float hp = 10;

@@ -38,7 +38,7 @@ public class Explosion : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            PhysInteractions target = collider.GetComponentInParent<PhysInteractions>();
+            Destructable target = collider.GetComponentInParent<Destructable>();
 
             if (target != null)
             {
