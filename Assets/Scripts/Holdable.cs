@@ -30,7 +30,7 @@ public class Holdable : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isHeld && (holdPoint.transform.position - transform.position).magnitude > releaseDistance) Release();
         

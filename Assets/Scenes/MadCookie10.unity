@@ -3291,8 +3291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   maxSpeed: 4
   sprintMultiplier: 1.5
-  acceleration: 2
-  deceleration: 2
+  acceleration: 10
+  deceleration: 10
   jumpStrenght: 5
   fallAcceleration: 1
   moveAction: {fileID: 8603586352357500, guid: 5ff02abcc209dd34aa1682bfa5beb6ef, type: 3}
@@ -3325,7 +3325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0456f2cc2ecc86444affce3948d26267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControls
-  testInput: {fileID: -8576249052469628396, guid: 5ff02abcc209dd34aa1682bfa5beb6ef, type: 3}
+  mouseMovementInput: {fileID: -8576249052469628396, guid: 5ff02abcc209dd34aa1682bfa5beb6ef, type: 3}
   speed: 0.06
 --- !u!135 &1140988707
 SphereCollider:
@@ -5627,6 +5627,14 @@ PrefabInstance:
     - target: {fileID: 1676280086126654631, guid: 70e4a7c7ba5ab5d4e80205af2006a1eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557483590975252407, guid: 70e4a7c7ba5ab5d4e80205af2006a1eb, type: 3}
+      propertyPath: holdMass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557483590975252407, guid: 70e4a7c7ba5ab5d4e80205af2006a1eb, type: 3}
+      propertyPath: holdForce
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6557483590975252407, guid: 70e4a7c7ba5ab5d4e80205af2006a1eb, type: 3}
       propertyPath: holdPoint

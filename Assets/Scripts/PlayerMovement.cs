@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         sprintAction.action.Disable();
         jumpAction.action.Disable();
     }
-    void Update()
+    void FixedUpdate()
     {
         Vector3 camForward = camTransform.forward;
         Vector3 camRight = camTransform.right;
