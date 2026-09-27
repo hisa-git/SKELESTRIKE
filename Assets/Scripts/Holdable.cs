@@ -3,7 +3,7 @@ using UnityEngine;
 public class Holdable : MonoBehaviour
 {
     public GameObject holdPoint;
-    public float holdForce = 10f;
+    public float holdForce = 50f;
     public float holdMass = 0.1f;
     public bool isHeld = false;
     public float tolerance = 0f;

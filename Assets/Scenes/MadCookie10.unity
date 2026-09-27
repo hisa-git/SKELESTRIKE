@@ -5630,11 +5630,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6557483590975252407, guid: 70e4a7c7ba5ab5d4e80205af2006a1eb, type: 3}
       propertyPath: holdMass
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6557483590975252407, guid: 70e4a7c7ba5ab5d4e80205af2006a1eb, type: 3}
       propertyPath: holdForce
-      value: 500
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6557483590975252407, guid: 70e4a7c7ba5ab5d4e80205af2006a1eb, type: 3}
       propertyPath: holdPoint

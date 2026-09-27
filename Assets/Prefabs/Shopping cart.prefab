@@ -2871,7 +2871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Holdable
   holdPoint: {fileID: 0}
-  holdForce: 100
+  holdForce: 200
   holdMass: 1
   isHeld: 0
   tolerance: 0

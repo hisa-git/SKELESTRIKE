@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Holdable
   holdPoint: {fileID: 0}
-  holdForce: 10
+  holdForce: 50
   holdMass: 0.1
   isHeld: 0
   tolerance: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PhysInteractions
   hp: 10
   minDmg: 5
+  colDmgMultiplier: 1
 --- !u!1001 &3363789942343091983
 PrefabInstance:
   m_ObjectHideFlags: 0
