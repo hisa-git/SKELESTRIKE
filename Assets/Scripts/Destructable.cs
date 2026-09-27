@@ -19,6 +19,7 @@ public class Destructable : MonoBehaviour
 
     public void Damage(float dmg)
     {
+        Debug.Log(gameObject + " damaged " + dmg); // DEBUG
         hp -= dmg;
         if (hp <= 0)
         {
@@ -57,7 +58,7 @@ public class Destructable : MonoBehaviour
         
 
         float dmg = colEnergy * colDmgMultiplier;
-        Damage(Math.Min(dmg, minDmg));
+        if (dmg > minDmg) Damage(dmg);
     }
 }
 

@@ -40,6 +40,7 @@ public class Holdable : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
             if ((holdPoint.transform.position - transform.position).magnitude > tolerance)
             {
+                Debug.Log(holdForce); // DEBUG
                 rb.AddForce((holdPoint.transform.position - transform.position) * holdForce, ForceMode.Force);
             }
             rb.MoveRotation(Quaternion.Euler(new Vector3(holdPoint.transform.rotation.eulerAngles.x * rotationMultiplier.x + rotationOffset.x,

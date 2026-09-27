@@ -1,10 +1,9 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerControls : MonoBehaviour
+public class PlayerCamera : MonoBehaviour
 {
-    public InputActionReference testInput;
+    public InputActionReference mouseMovementInput;
     public float speed = 1;
 
     float xRotation = 0f;
@@ -14,12 +13,12 @@ public class PlayerControls : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        testInput.action.Enable();
+        mouseMovementInput.action.Enable();
     }
 
     void Update()
     {
-        Vector2 mouseDelta = testInput.action.ReadValue<Vector2>();
+        Vector2 mouseDelta = mouseMovementInput.action.ReadValue<Vector2>();
         xRotation += mouseDelta.y * speed;
         yRotation += mouseDelta.x * speed;
         if (xRotation > 90) xRotation = 90;
