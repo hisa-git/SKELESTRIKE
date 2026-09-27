@@ -23,7 +23,7 @@ public class BuildingPart : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapBox(transform.position, (transform.localScale / 2) + new Vector3(0.2f, 0.2f, 0.2f), transform.rotation, LayerMask.GetMask("Static Environment"));
         foreach (Collider col in hitColliders)
         {
-            if (col.gameObject != gameObject && col.GetComponent<BuildingPart>() != null)
+            if (col.gameObject != gameObject && (col.GetComponent<BuildingPart>() != null || col.GetComponent<IsGroundForBuildingParts>() != null))
             {
                 connectedObjs.Add(col.gameObject);
             }
