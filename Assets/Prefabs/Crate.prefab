@@ -112,6 +112,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  inputType: {fileID: -1570901165390321425, guid: 5ff02abcc209dd34aa1682bfa5beb6ef, type: 3}
 --- !u!114 &785833049856523364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysInteractions
   hp: 10
+  minDmg: 5
 --- !u!1001 &3363789942343091983
 PrefabInstance:
   m_ObjectHideFlags: 0

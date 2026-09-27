@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,17 +9,23 @@ public class PlayerInteractor : MonoBehaviour
     public LayerMask interactLayer;
     private Interactable currentInteractable;
 
-    public InputActionReference interactionAction;
+    public InputActionReference[] interactionActions;
 
     void OnEnable()
     {
-        interactionAction.action.Enable();
-        interactionAction.action.performed += Interact;
+        foreach (InputActionReference interactionAction in interactionActions)
+        {
+            interactionAction.action.Enable();
+            interactionAction.action.performed += Interact;
+        }
     }
     void OnDisable()
     {
-        interactionAction.action.performed -= Interact;
-        interactionAction.action.Disable();
+        foreach (InputActionReference interactionAction in interactionActions)
+        {
+            interactionAction.action.performed -= Interact;
+            interactionAction.action.Disable();
+        }
     }
 
     void Update()
@@ -41,7 +48,20 @@ public class PlayerInteractor : MonoBehaviour
 
     void Interact(InputAction.CallbackContext context)
     {
-        currentInteractable?.Interact();
+        currentInteractable?.Interact(GetAllActiveActions()[0]);
         //Debug.Log("Player tried to interact with" + currentInteractable?.name);
+    }
+
+    InputActionReference[] GetAllActiveActions()
+    {
+        List<InputActionReference> activeActions = new List<InputActionReference>();
+        foreach (InputActionReference interactionAction in interactionActions)
+        {
+            if (interactionAction.action.phase == InputActionPhase.Performed)
+            {
+                activeActions.Add(interactionAction);
+            }
+        }
+        return activeActions.ToArray();
     }
 }
