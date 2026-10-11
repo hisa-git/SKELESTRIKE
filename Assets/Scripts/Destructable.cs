@@ -8,7 +8,7 @@ public class Destructable : MonoBehaviour
     [SerializeField]
     float minDmg = 5f;
     [SerializeField]
-    float colDmgMultiplier = 1f;
+    float hardness = 1f;
     Rigidbody rb;
 
     void Start()
@@ -46,19 +46,33 @@ public class Destructable : MonoBehaviour
         }
         float otherMass = 1;
         Vector3 otherVel = new Vector3();
+        float otherHardness = 1f;
         if (collision.rigidbody != null)
         {
             otherMass = collision.rigidbody.mass;
             otherVel = collision.rigidbody.linearVelocity;
+            if (collision.gameObject.GetComponent<Destructable>() != null)
+            {
+                otherHardness = collision.gameObject.GetComponent<Destructable>().hardness;
+            }
         }
 
-        float colSpeed = (vel - otherVel).magnitude;
-        float effectiveMass = (mass * otherMass) / (mass + otherMass);
-        float colEnergy = 0.5f * effectiveMass * (colSpeed * colSpeed);
+        //float kinE = mass * (vel.magnitude * vel.magnitude) * 0.5f;
+        //float otherKinE = otherMass * (otherVel.magnitude * otherVel.magnitude) * 0.5f;
+        //float colEnergy = kinE + otherKinE;
         
-
-        float dmg = colEnergy * colDmgMultiplier;
-        if (dmg > minDmg) Damage(dmg);
+        float dmg = (((vel - otherVel).magnitude * (vel - otherVel).magnitude) * 0.5f + 
+                    ((otherVel.magnitude / (vel.magnitude + otherVel.magnitude)) * (vel - otherVel).magnitude * (vel - otherVel).magnitude * otherMass * 0.5f))
+                     * otherHardness * hardness;
+        if (dmg > minDmg)
+        {
+            Damage(dmg);
+            Debug.Log("DMGed: " + dmg);
+        } 
+        else
+        {
+            Debug.Log(dmg);
+        }
     }
 }
 

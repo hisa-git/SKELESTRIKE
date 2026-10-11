@@ -124,7 +124,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460925381528101986}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -171,7 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysInteractions
   hp: 10
-  minDmgForce: 5
+  minDmg: 5
+  colDmgMultiplier: 1
 --- !u!114 &4769841292085390451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,3 +200,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  inputType: {fileID: -1570901165390321425, guid: 5ff02abcc209dd34aa1682bfa5beb6ef, type: 3}
