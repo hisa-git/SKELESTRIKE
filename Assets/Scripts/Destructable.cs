@@ -63,9 +63,15 @@ public class Destructable : MonoBehaviour
         //float otherKinE = otherMass * (otherVel.magnitude * otherVel.magnitude) * 0.5f;
         //float colEnergy = kinE + otherKinE;
         
+        /* OLD VARIANT
         float dmg = (((vel - otherVel).magnitude * (vel - otherVel).magnitude) * 0.5f + 
                     ((otherVel.magnitude / (vel.magnitude + otherVel.magnitude)) * (vel - otherVel).magnitude * (vel - otherVel).magnitude * otherMass * 0.5f))
                      * otherHardness * hardness; // this shit just works dont touch
+        */
+
+        float dmg = ((otherVel.magnitude / (vel.magnitude + otherVel.magnitude)) * (vel - otherVel).magnitude * (vel - otherVel).magnitude * otherMass * 0.5f)
+                     * otherHardness * hardness; // this shit just works dont touch
+
         if (dmg > minDmg)
         {
             Damage(dmg);

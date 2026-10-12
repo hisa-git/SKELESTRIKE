@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class BuildingPart : MonoBehaviour
 {
@@ -10,9 +13,13 @@ public class BuildingPart : MonoBehaviour
     bool isStatic = true;
     public int groundDistance = 0;
     bool groundConnected = false;
+
+    private int maxGroundDistance = 100;
+    private bool startFinished = false;
+
     public List<GameObject> connectedObjs = new List<GameObject>();
 
-    void Start()
+    private IEnumerator Start()
     {
         rb = GetComponent<Rigidbody>();
         //joints = GetJoints();
@@ -20,7 +27,10 @@ public class BuildingPart : MonoBehaviour
         gameObject.layer = 6;
         rb.excludeLayers = LayerMask.GetMask("Static Environment");
 
+        yield return null;
+
         Collider[] hitColliders = Physics.OverlapBox(transform.position, (transform.localScale / 2) + new Vector3(0.2f, 0.2f, 0.2f), transform.rotation, LayerMask.GetMask("Static Environment"));
+        Debug.Log(gameObject.ToString() + hitColliders[1].ToString() + hitColliders.Count());
         foreach (Collider col in hitColliders)
         {
             if (col.gameObject != gameObject && (col.GetComponent<BuildingPart>() != null || col.GetComponent<IsGroundForBuildingParts>() != null))
@@ -28,6 +38,7 @@ public class BuildingPart : MonoBehaviour
                 connectedObjs.Add(col.gameObject);
             }
         }
+        startFinished = true;
     }
 
     void Update()
@@ -41,13 +52,13 @@ public class BuildingPart : MonoBehaviour
         //loadTime -= Time.deltaTime;
         
 
-        if (isStatic)
+        if (isStatic && startFinished)
         {
             //if (loadTime <= 0)
             //{
 
             List<int> distances = new List<int>();
-            distances.Add(101);
+            distances.Add(maxGroundDistance + 1);
             List<GameObject> objs2Del = new List<GameObject>();
             groundConnected = false;
             
@@ -85,7 +96,7 @@ public class BuildingPart : MonoBehaviour
                 }
             //}
 
-            if (groundDistance > 100)
+            if (groundDistance > maxGroundDistance)
             {
                 isStatic = false;
                 rb.isKinematic = false;
