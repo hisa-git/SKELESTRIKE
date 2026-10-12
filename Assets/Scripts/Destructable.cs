@@ -34,6 +34,8 @@ public class Destructable : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.GetComponent<IgnoreForColDmg>() != null) return;
+
         //Vector3 colVel = collision.linearVelocity;
         //float colSpeed = colVel.magnitude;
 

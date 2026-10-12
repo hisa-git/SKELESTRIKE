@@ -169,6 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2be6f358727401488366b77e6c9e909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysInteractions
-  hp: 10
-  minDmg: 5
+  hp: 40
+  minDmg: 15
   hardness: 0.7
