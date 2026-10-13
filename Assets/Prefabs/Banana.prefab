@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2869728835647401415}
   - component: {fileID: 6152423218990615847}
   - component: {fileID: 2754601528556786987}
-  - component: {fileID: 4339313665748488284}
+  - component: {fileID: 1271092824397783176}
   m_Layer: 0
   m_Name: Banana
   m_TagString: Untagged
@@ -134,27 +134,22 @@ MonoBehaviour:
   lockRotation: 0
   rotationMultiplier: {x: 1, y: 1, z: 0}
   rotationOffset: {x: 90, y: 0, z: 0}
---- !u!65 &4339313665748488284
-BoxCollider:
+--- !u!114 &1271092824397783176
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5630511839588662253}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.4, y: 0.3, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2be6f358727401488366b77e6c9e909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Destructable
+  hp: 20
+  minDmg: 20
+  hardness: 0.5
+  prefabsOnCollapse: []
 --- !u!1001 &2372496506100953258
 PrefabInstance:
   m_ObjectHideFlags: 0

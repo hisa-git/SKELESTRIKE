@@ -9,6 +9,8 @@ public class Destructable : MonoBehaviour
     float minDmg = 5f;
     [SerializeField]
     float hardness = 1f;
+    [SerializeField]
+    GameObject[] prefabsOnCollapse;
     Rigidbody rb;
 
     void Start()
@@ -29,6 +31,14 @@ public class Destructable : MonoBehaviour
 
     public void Collapse()
     {
+        if (prefabsOnCollapse.Length > 0)
+        {
+            GameObject prefab = prefabsOnCollapse[UnityEngine.Random.Range(0, prefabsOnCollapse.Length)];
+            if (prefab != null)
+            {
+                Instantiate(prefabsOnCollapse[UnityEngine.Random.Range(0, prefabsOnCollapse.Length)], transform.position, transform.rotation);
+            }
+        }
         Destroy(gameObject);
     }
 
@@ -46,7 +56,7 @@ public class Destructable : MonoBehaviour
             mass = GetComponent<Rigidbody>().mass;
             vel = GetComponent<Rigidbody>().linearVelocity;
         }
-        float otherMass = 1;
+        float otherMass = 10000;
         Vector3 otherVel = new Vector3();
         float otherHardness = 1f;
         if (collision.rigidbody != null)
@@ -69,8 +79,9 @@ public class Destructable : MonoBehaviour
                      * otherHardness * hardness; // this shit just works dont touch
         */
 
-        float dmg = ((otherVel.magnitude / (vel.magnitude + otherVel.magnitude)) * (vel - otherVel).magnitude * (vel - otherVel).magnitude * otherMass * 0.5f)
-                     * otherHardness * hardness; // this shit just works dont touch
+        float dmg = (((otherVel.magnitude / (vel.magnitude + otherVel.magnitude)) * ((vel - otherVel).magnitude * (vel - otherVel).magnitude) * (otherMass/(otherMass+mass)) * otherMass) +
+                     ((vel.magnitude / (vel.magnitude + otherVel.magnitude)) * ((vel - otherVel).magnitude * (vel - otherVel).magnitude) * (otherMass/(otherMass+mass)) * mass))
+                     * 0.5f * otherHardness * hardness; // this shit just works dont touch
 
         if (dmg > minDmg)
         {
