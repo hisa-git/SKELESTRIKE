@@ -31,7 +31,7 @@ public class Destructable : MonoBehaviour
 
     public void Collapse()
     {
-        if (prefabsOnCollapse.Length > 0)
+        if (prefabsOnCollapse != null && prefabsOnCollapse.Length > 0)
         {
             GameObject prefab = prefabsOnCollapse[UnityEngine.Random.Range(0, prefabsOnCollapse.Length)];
             if (prefab != null)

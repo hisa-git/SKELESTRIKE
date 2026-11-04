@@ -11,6 +11,11 @@ public class BuildingPart : MonoBehaviour
     FixedJoint[] joints;
     [SerializeField]
     bool isStatic = true;
+    [SerializeField]
+    bool checkForGround = true;
+    [SerializeField]
+    bool checkForConnections = true;
+
     public int groundDistance = 0;
     bool groundConnected = false;
 
@@ -29,13 +34,16 @@ public class BuildingPart : MonoBehaviour
 
         yield return null;
 
-        Collider[] hitColliders = Physics.OverlapBox(transform.position, (transform.localScale / 2) + new Vector3(0.2f, 0.2f, 0.2f), transform.rotation, LayerMask.GetMask("Static Environment"));
-        Debug.Log(gameObject.ToString() + hitColliders[1].ToString() + hitColliders.Count());
-        foreach (Collider col in hitColliders)
+        if (checkForConnections)
         {
-            if (col.gameObject != gameObject && (col.GetComponent<BuildingPart>() != null || col.GetComponent<IsGroundForBuildingParts>() != null))
+            Collider[] hitColliders = Physics.OverlapBox(transform.position, (transform.localScale / 2) + new Vector3(0.05f, 0.05f, 0.05f), transform.rotation, LayerMask.GetMask("Static Environment"));
+            Debug.Log(gameObject.ToString() + hitColliders[1].ToString() + hitColliders.Count());
+            foreach (Collider col in hitColliders)
             {
-                connectedObjs.Add(col.gameObject);
+                if (col.gameObject != gameObject && (col.GetComponent<BuildingPart>() != null || (col.GetComponent<IsGroundForBuildingParts>() != null && checkForGround)))
+                {
+                    connectedObjs.Add(col.gameObject);
+                }
             }
         }
         startFinished = true;
